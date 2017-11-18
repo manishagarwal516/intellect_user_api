@@ -12,6 +12,7 @@ chai.use(chaiHttp);
 //Our parent block
 describe('user', () => {
     beforeEach((done) => { //Before each test we empty the database   
+        done();
     });
 /*
   * Test the /GET route
@@ -20,7 +21,7 @@ describe('user', () => {
       it('it should GET an user', (done) => {
         chai.request(server)
             .get('/user/1')
-            .end((err, res) => {
+            .end((res) => {
                 res.should.have.status(200);
                 res.body.length.should.be.eql(1);
               done();
@@ -32,7 +33,7 @@ describe('user', () => {
       it('it should GET an user todo', (done) => {
         chai.request(server)
             .get('/user/activeUsersTodo')
-            .end((err, res) => {
+            .end((res) => {
                 res.should.have.status(200);
                 res.body.length.should.be.eql(0);
               done();
