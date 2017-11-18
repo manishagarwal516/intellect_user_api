@@ -1,12 +1,13 @@
-var appModel = require('./controllers/appModel');
-var _ = reguire('underscore');
+var appModel = require('./appModel.js');
+var _ = require('underscore');
 
 var userController ={
     getUserDetail : function(userId,res){
         var result;
-        _.each(appModel.dummyData.users, function(key, user){
-            if(user[id] === userId)
+        _.each(appModel.dummyData.users, function(user, key){
+            if(user.id === parseInt(userId.id)){
                 result = appModel.dummyData.users[key];
+            }
         })
         res(null, result);
     },
@@ -15,12 +16,13 @@ var userController ={
         var activeUsers = [];
         var activeUsersToDoInfo = [];
         _.map(appModel.dummyData.users, function(user){
-            if(user.isActive){
+            console.log(user);
+            if(user.isActive === true){
                 activeUsers.push(user);
             }
         })
         _.each(appModel.dummyData.toDos, function(todo){
-            _.map(activeUsers, function(key, user){
+            _.map(activeUsers, function(user, key){
                 if(todo.user_id = user.id){
                     activeUsersToDoInfo.push({
                         userInfo: user,
@@ -28,8 +30,9 @@ var userController ={
                     })
                 }
             });
-        }),
-        res(null, result);
+        });
+        console.log(activeUsersToDoInfo);
+        res(null, activeUsersToDoInfo);
     }
 }    
 module.exports = userController;

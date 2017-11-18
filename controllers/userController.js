@@ -1,4 +1,4 @@
-var userModel = require('./controllers/userModel');
+var userModel = require('../models/userModel.js');
 var response = {};
 
 var userController ={
@@ -10,7 +10,7 @@ var userController ={
         });
     },
 
-    activeUsersTodo : function(userId,res){
+    getActiveUsersTodo : function(userId,res){
         userModel.getActiveUsersTodo(userId, function(err, result){
             response.err = err;
             response.result = result;

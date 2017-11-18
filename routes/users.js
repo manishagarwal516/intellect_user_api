@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var userController = require('./controllers/userController');
+var userController = require('../controllers/userController.js');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -14,8 +14,8 @@ router.get('/:id', function(req, res, next) {
   
 });
 
-router.get('/activeUsersTodo', function(req, res, next) {
-  userController.getActiveUsersTodo(req, function(err,res){
+router.get('/user/getactiveUsersTodo', function(req, res, next) {
+  userController.getActiveUsersTodo(req, function(result){
     res.send(result);
   });
   

@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var todoController = require('./controllers/todoController');
+var todoController = require('../controllers/todoController.js');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -8,13 +8,13 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:id', function(req, res, next) {
-  todoController.getToDetail(req.params, function(result){
+  todoController.getToDoDetail(req.params, function(result){
     res.send(result);
   })
 });
 
-router.get('/specficUsersTodo', function(req, res, next) {
-  todoController.getActiveUsersTodo(req, function(result){
+router.get('/:id/getSpecficUsersTodo', function(req, res, next) {
+  todoController.getSpecficUsersTodo(req.params, function(result){
     res.send(result);
   });
   

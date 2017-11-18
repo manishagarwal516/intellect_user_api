@@ -1,4 +1,4 @@
-var toDoModel = require('./controllers/toDoModel');
+var toDoModel = require('../models/toDoModel.js');
 var response = {};
 
 var toDoController ={
@@ -10,8 +10,8 @@ var toDoController ={
         });
     },
 
-    getSpecficUsersTodo : function(toDoId,res){
-        toDoModel.getToDoDetail(toDoId, function(err, result){
+    getSpecficUsersTodo : function(userToId,res){
+        toDoModel.getSpecficUsersTodo(userToId, function(err, result){
             response.err = err;
             response.result = result;
             res(response);

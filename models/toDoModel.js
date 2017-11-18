@@ -1,28 +1,26 @@
-var appModel = require('./controllers/appModel');
-var _ = reguire('underscore');
+var appModel = require('./appModel.js');
+var _ = require('underscore');
 
 var toDoController ={
     getToDoDetail : function(toDoId,res){
         var result;
-        _.each(appModel.dummyData.toDos, function(key, toDo){
-            if(toDo[id] === toDoId)
-                result = appModel.dummyData.toDo[key];
+        _.each(appModel.dummyData.toDos, function(toDo, key){
+            if(toDo.id === parseInt(toDoId['id']))
+                result = appModel.dummyData.toDos[key];
         })
         res(null, result);
     },
 
-    getSpecficUsersTodo : function(userId,res){
+    getSpecficUsersTodo : function(userIdParams,res){
+        var toDoInfo = {};
         var today = new Date();
         var specficUserTodo = [];
         _.each(appModel.dummyData.toDos, function(todo){
-            if(todo.user_id = user.id && (toDo.targetDate == today && toDo.targetDate || today.setDate(today.getDate() + 1)){
-                activeUsersToDoInfo.push({
-                    userInfo: user,
-                    toDoInfo: todo 
-                })
+            if(todo.user_id == userIdParams['id'] && (todo.targetDate == today && todo.targetDate || today.setDate(today.getDate() + 1))){
+                toDoInfo = todo
             }
         })
-        res(null, specficUserTodo);
+        res(null, toDoInfo);
     }
 }    
 module.exports = toDoController;
